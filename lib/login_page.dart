@@ -8,11 +8,16 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
+    final formKey = GlobalKey<FormState>();
     return Scaffold(
       backgroundColor: Color(0XFFF1E7E7),
       body: Form(
+        key: formKey,
       child: Padding(
         padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -25,6 +30,13 @@ class _LoginPageState extends State<LoginPage> {
                 style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
               ),
 
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Email",
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
               const SizedBox(height: 8),
                   TextFormField(
                     keyboardType: TextInputType.emailAddress,
@@ -60,7 +72,7 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(height: 16),
 
                   Text(
-                    "Email",
+                    "Password",
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 8),
@@ -100,6 +112,9 @@ class _LoginPageState extends State<LoginPage> {
                     },
                     obscureText: true,
                   ),
+                  
+                ],
+              ),
 
               
             ],
