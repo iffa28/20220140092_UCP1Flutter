@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ucp1/home_page.dart';
+import 'package:ucp1/register_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -19,8 +20,8 @@ class _LoginPageState extends State<LoginPage> {
       backgroundColor: Color(0XFFF1E7E7),
       body: Form(
         key: formKey,
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -38,7 +39,7 @@ class _LoginPageState extends State<LoginPage> {
                     "Email",
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
-              const SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   TextFormField(
                     controller: emailController,
                     keyboardType: TextInputType.emailAddress,
@@ -60,12 +61,13 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         borderRadius: BorderRadius.circular(15.0),
                       ),
-                      
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Email tidak boleh kosong';
-                      } else if (!RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$').hasMatch(value)) {
+                      } else if (!RegExp(
+                        r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
+                      ).hasMatch(value)) {
                         return 'Format email tidak valid';
                       }
                       return null;
@@ -128,7 +130,6 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         );
                       }
-
                     },
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
@@ -140,16 +141,38 @@ class _LoginPageState extends State<LoginPage> {
                         vertical: 18,
                       ),
                     ),
-                    child:  Text(
+                    child: Text(
                       'Login',
-                      style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
-                  
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text('Belum punya akun? Silahkan'),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const RegisterPage(),
+                            ),
+                          );
+                        },
+                        child: const Text(
+                          'Daftar disini',
+                          style: TextStyle(color: Colors.red),
+                        ),
+                      ),
+                    ],
+                  ),
                 ],
               ),
-
-              
             ],
           ),
         ),
