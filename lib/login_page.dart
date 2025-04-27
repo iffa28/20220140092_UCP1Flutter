@@ -29,7 +29,7 @@ class _LoginPageState extends State<LoginPage> {
                 'SELAMAT DATANG KEMBALI',
                 style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
               ),
-
+              const SizedBox(height: 30),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -39,6 +39,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
               const SizedBox(height: 8),
                   TextFormField(
+                    controller: emailController,
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
                       //membuat icon di start text field
@@ -78,6 +79,7 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(height: 8),
 
                   TextFormField(
+                    controller: passwordController,
                     keyboardType: TextInputType.visiblePassword,
                     decoration: InputDecoration(
                       floatingLabelAlignment: FloatingLabelAlignment.start,
