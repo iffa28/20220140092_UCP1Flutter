@@ -24,6 +24,83 @@ class _LoginPageState extends State<LoginPage> {
                 'SELAMAT DATANG KEMBALI',
                 style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
               ),
+
+              const SizedBox(height: 8),
+                  TextFormField(
+                    keyboardType: TextInputType.emailAddress,
+                    decoration: InputDecoration(
+                      //membuat icon di start text field
+                      prefixIcon: Align(
+                        widthFactor: 1.0,
+                        heightFactor: 1.0,
+                        child: Icon(Icons.email),
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+                      hintText: 'Email',
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(
+                          color: Colors.indigo,
+                          width: 2.0,
+                        ),
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+                      
+                    ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Email tidak boleh kosong';
+                      } else if (!RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$').hasMatch(value)) {
+                        return 'Format email tidak valid';
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(height: 16),
+
+                  Text(
+                    "Email",
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 8),
+
+                  TextFormField(
+                    keyboardType: TextInputType.visiblePassword,
+                    decoration: InputDecoration(
+                      floatingLabelAlignment: FloatingLabelAlignment.start,
+
+                      //membuat icon di start text field
+                      prefixIcon: Align(
+                        widthFactor: 1.0,
+                        heightFactor: 1.0,
+                        child: Icon(Icons.lock),
+                      ),
+                      suffixIcon: IconButton(
+                        icon: const Icon(Icons.visibility_off),
+                        onPressed: () {},
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+                      hintText: 'Password',
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(
+                          color: Colors.indigo,
+                          width: 2.0,
+                        ),
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+                    ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Password tidak boleh kosong';
+                      }
+                      return null;
+                    },
+                    obscureText: true,
+                  ),
+
               
             ],
           ),
