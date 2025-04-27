@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ucp1/home_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -113,6 +114,36 @@ class _LoginPageState extends State<LoginPage> {
                       return null;
                     },
                     obscureText: true,
+                  ),
+
+                  const SizedBox(height: 50),
+                  ElevatedButton(
+                    onPressed: () {
+                      if (formKey.currentState!.validate()) {
+                        // Perform login action
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const HomePage(),
+                          ),
+                        );
+                      }
+
+                    },
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+                      backgroundColor: Color(0XFF2D336B),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 169,
+                        vertical: 18,
+                      ),
+                    ),
+                    child:  Text(
+                      'Login',
+                      style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
+                    ),
                   ),
                   
                 ],
