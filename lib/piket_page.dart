@@ -1,7 +1,6 @@
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-
 class PiketPage extends StatefulWidget {
   final String namausr;
   const PiketPage({super.key,
@@ -20,6 +19,14 @@ class _PiketPageState extends State<PiketPage> {
   final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
+    Future<DateTime?> _showDatePicker() async {
+      return await showDatePicker(
+        context: context,
+        initialDate: DateTime.now(),
+        firstDate: DateTime(2000),
+        lastDate: DateTime(2100),
+      );
+    }
     namaController.text = widget.namausr; 
     return Scaffold(
       appBar: AppBar(
@@ -134,6 +141,7 @@ class _PiketPageState extends State<PiketPage> {
                       ),
 
                       const SizedBox(width: 16),
+
                 ],
               ),
             ),
