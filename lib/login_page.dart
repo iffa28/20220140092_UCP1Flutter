@@ -140,12 +140,35 @@ class _LoginPageState extends State<LoginPage> {
                   ElevatedButton(
                     onPressed: () {
                       if (formKey.currentState!.validate()) {
-                        
+                        String inputEmail = emailController.text.trim();
+                        String inputPassword = passwordController.text.trim();
+
+                        const String adminNama = 'admin';
+                        String adminEmail = 'admin@gmail.com';
+                        const String adminPw = 'admin123';
+
+                        if ((inputEmail == widget.email &&
+                                inputPassword == widget.password) ||
+                            (inputEmail == adminEmail &&
+                                inputPassword == adminPw)) {
+                          String nama =
+                              inputEmail == adminEmail
+                                  ? adminNama
+                                  : widget.namaUser;
+                          String email =
+                              inputEmail == adminEmail
+                                  ? adminEmail
+                                  : widget.email;
+                          String password =
+                              inputEmail == adminEmail
+                                  ? adminPw
+                                  : widget.password;
                           Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
                               builder:
                                   (context) => HomePage(
+  
                                   ),
                             ),
                           );
