@@ -1,6 +1,7 @@
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+
 class PiketPage extends StatefulWidget {
   final String namausr;
   const PiketPage({super.key,
@@ -142,6 +143,28 @@ class _PiketPageState extends State<PiketPage> {
 
                       const SizedBox(width: 16),
 
+                      ElevatedButton(
+                        onPressed: () {
+                          if (formKey.currentState!.validate()) {
+                            setState(() {
+                              // Menambahkan tugas piket ke dalam daftar
+                              tugasPiket.add({
+                                'tugas': tugasController.text,
+                                'nama': namaController.text,
+                                'tanggal': tanggalController.text,
+                              });
+                              // Mengosongkan field setelah menambahkan tugas
+                              namaController.clear();
+                              tanggalController.clear();
+                              tugasController.clear();
+                            });
+                          }
+                        },
+                        child: Text("Tambah"),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 20),
                 ],
               ),
             ),
