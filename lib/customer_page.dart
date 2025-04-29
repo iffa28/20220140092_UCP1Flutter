@@ -273,6 +273,54 @@ class _CustomerPageState extends State<CustomerPage> {
                     ],
                   ),
 
+                  const SizedBox(height: 50),
+                  ElevatedButton(
+                    onPressed: () {
+                      if (formKey.currentState!.validate()) {
+                        setState(() {
+                          dataPelanggan.add({
+                            'namaCs': namaCustController.text,
+                            'emailCs': emailCustController.text,
+                            'hpCs': phoneCustController.text,
+                            'alamat': alamatCustController.text,
+                            'provinsi': provinsiCustController.text,
+                            'kodePos': kodePosCustController.text,
+                          });
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => DetailPelanggan(
+                                nmAkun: widget.nmAkun,
+                                emailAkun: widget.emailAkun,
+                                pwAkun: widget.pwAkun,
+                                nama: dataPelanggan.last['namaCs'] ?? '',
+                                email: dataPelanggan.last['emailCs'] ?? '',
+                                phone: dataPelanggan.last['hpCs'] ?? '',
+                                alamat: dataPelanggan.last['alamat'] ?? '',
+                                provinsi: dataPelanggan.last['provinsi'] ?? '',
+                                kodePos: dataPelanggan.last['kodePos'] ?? ''
+                              ),
+                            ),
+                          );
+                        });
+                      }
+                    },
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+                      backgroundColor: Color(0XFF2D336B),
+                      minimumSize: const Size(500, 70),
+                    ),
+                    child: Text(
+                      'Simpan',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
                   
                 ],
               ),
