@@ -13,6 +13,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController regEmailController = TextEditingController();
   final TextEditingController regPasswordController = TextEditingController();
   final TextEditingController ConfPasswordController = TextEditingController();
+  List<Map<String, String>> dataUser = [];
   bool _obscurePassword = true;
   bool _obscureConfPassword = true;
 
