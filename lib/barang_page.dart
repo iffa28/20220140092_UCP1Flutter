@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 
+
 class BarangPage extends StatefulWidget {
   final String nmAkun;
   final String emailAkun;
@@ -15,7 +16,13 @@ class BarangPage extends StatefulWidget {
 }
 
 class _BarangPageState extends State<BarangPage> {
-  
+
+  final TextEditingController tglTransaksiController = TextEditingController();
+  final TextEditingController hargaSatuanController = TextEditingController();
+  final TextEditingController jumlahBrgController = TextEditingController();
+
+ 
+
   @override
   Widget build(BuildContext context) {
     
