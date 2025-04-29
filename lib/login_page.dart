@@ -3,7 +3,7 @@ import 'package:ucp1/home_page.dart';
 import 'package:ucp1/register_page.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+  const LoginPage({super.key,});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -12,10 +12,12 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  bool _obscurePassword = true;
 
   @override
   Widget build(BuildContext context) {
     final formKey = GlobalKey<FormState>();
+
     return Scaffold(
       backgroundColor: Color(0XFFF1E7E7),
       body: Form(
@@ -84,6 +86,7 @@ class _LoginPageState extends State<LoginPage> {
                   TextFormField(
                     controller: passwordController,
                     keyboardType: TextInputType.visiblePassword,
+                    obscureText: _obscurePassword,
                     decoration: InputDecoration(
                       floatingLabelAlignment: FloatingLabelAlignment.start,
 
@@ -94,8 +97,16 @@ class _LoginPageState extends State<LoginPage> {
                         child: Icon(Icons.lock),
                       ),
                       suffixIcon: IconButton(
-                        icon: const Icon(Icons.visibility_off),
-                        onPressed: () {},
+                        icon: Icon(
+                          _obscurePassword
+                              ? Icons.visibility_off
+                              : Icons.visibility,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _obscurePassword = !_obscurePassword;
+                          });
+                        },
                       ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15.0),
@@ -115,21 +126,31 @@ class _LoginPageState extends State<LoginPage> {
                       }
                       return null;
                     },
-                    obscureText: true,
                   ),
 
                   const SizedBox(height: 50),
                   ElevatedButton(
                     onPressed: () {
                       if (formKey.currentState!.validate()) {
-                        // Perform login action
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const HomePage(),
-                          ),
-                        );
+                        
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder:
+                                  (context) => HomePage(
+
+                                  ),
+                            ),
+                          );
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Email atau Password salah'),
+                            ),
+                          );
+                        }
                       }
+
                     },
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
