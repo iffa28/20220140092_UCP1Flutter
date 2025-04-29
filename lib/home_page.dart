@@ -68,7 +68,31 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
 
-                
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+
+                  children: [
+                    IconButton(
+                      icon: Icon(Icons.logout, color: Colors.white),
+                      onPressed: () {
+                        Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                            builder:
+                                (context) => LoginPage(
+                                  namaUser: widget.nama,
+                                  email: widget.email,
+                                  password: widget.pw,
+                                ),
+                          ),
+                          (route) => false,
+                        );
+                        // Handle notification icon press
+                      },
+                    ),
+                  ],
+                ),
               ],
             ),
           ),
