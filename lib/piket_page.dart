@@ -1,12 +1,11 @@
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:ucp1/detail_piket.dart';
 
 class PiketPage extends StatefulWidget {
   final String namausr;
-  const PiketPage({super.key,
-  required this.namausr
-  });
+  const PiketPage({super.key, required this.namausr});
 
   @override
   State<PiketPage> createState() => _PiketPageState();
@@ -28,7 +27,8 @@ class _PiketPageState extends State<PiketPage> {
         lastDate: DateTime(2100),
       );
     }
-    namaController.text = widget.namausr; 
+
+    namaController.text = widget.namausr;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Piket Gudang', style: TextStyle(fontSize: 24)),
@@ -79,6 +79,7 @@ class _PiketPageState extends State<PiketPage> {
                     "Pilih Tanggal",
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
+                  const SizedBox(height: 8),
 
                   DateTimeField(
                     controller: tanggalController,
@@ -153,10 +154,8 @@ class _PiketPageState extends State<PiketPage> {
                                 'nama': namaController.text,
                                 'tanggal': tanggalController.text,
                               });
-                              // Mengosongkan field setelah menambahkan tugas
-                              namaController.clear();
-                              tanggalController.clear();
                               tugasController.clear();
+                              tanggalController.clear();
                             });
                           }
                         },
@@ -169,7 +168,67 @@ class _PiketPageState extends State<PiketPage> {
               ),
             ),
           ),
-          
+          Center(
+            child: Column(
+              children: [
+                Text(
+                  'Daftar Tugas Piket',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 10),
+
+                Center(
+                  child:
+                      tugasPiket.isEmpty
+                          ? Center(
+                            child: const Text('Tidak ada tugas piket'),
+                          ) // Show this if the list is empty
+                          : ListView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: tugasPiket.length,
+                            itemBuilder: (context, index) {
+                              return Padding(
+                                padding: const EdgeInsets.all(16.0),
+                                child: Card(
+                                  color: Color(0XFF2D336B),
+                                  child: ListTile(
+                                    title: Text(
+                                      tugasPiket[index]['tugas'] ?? '',
+                                      style: TextStyle(color: Colors.white),
+                                    ),
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder:
+                                              (context) => DetailPiketPage(
+                                                nama:
+                                                    tugasPiket[index]['nama'] ??
+                                                    '',
+                                                tanggal:
+                                                    tugasPiket[index]['tanggal'] ??
+                                                    '',
+                                                tugas:
+                                                    tugasPiket[index]['tugas'] ??
+                                                    '',
+                                              ),
+                                        ),
+                                      );
+                                    },
+                                    trailing: Icon(
+                                      Icons.keyboard_arrow_right_sharp,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
