@@ -168,7 +168,9 @@ class _LoginPageState extends State<LoginPage> {
                             MaterialPageRoute(
                               builder:
                                   (context) => HomePage(
-  
+                                    nama: nama,
+                                    email: email,
+                                    pw: password,
                                   ),
                             ),
                           );
