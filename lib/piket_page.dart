@@ -106,6 +106,12 @@ class _PiketPageState extends State<PiketPage> {
                     onShowPicker: (context, currentValue) {
                       return _showDatePicker();
                     },
+                    validator: (value) {
+                      if (value == null) {
+                        return 'Tanggal tidak boleh kosong';
+                      }
+                      return null;
+                    },
                   ),
                   const SizedBox(height: 16),
 

@@ -7,9 +7,11 @@ class BarangPage extends StatefulWidget {
   final String nmAkun;
   final String emailAkun;
   final String pwAkun;
-  const BarangPage({super.key,
-  required this.nmAkun,
-  required this.emailAkun, required this.pwAkun
+  const BarangPage({
+    super.key,
+    required this.nmAkun,
+    required this.emailAkun,
+    required this.pwAkun,
   });
 
   @override
@@ -83,7 +85,6 @@ class _BarangPageState extends State<BarangPage> {
                   DateTimeField(
                     controller: tglTransaksiController,
                     format: DateFormat("E,dd MMMM yyyy"),
-                    initialValue: DateTime.now(),
                     decoration: InputDecoration(
                       prefixIcon: Align(
                         widthFactor: 1.0,
@@ -107,7 +108,7 @@ class _BarangPageState extends State<BarangPage> {
                     },
                     validator: (value) {
                       if (value == null) {
-                        return 'Tanggal Transaksi tidak boleh kosong';
+                        return 'Tanggal tidak boleh kosong';
                       }
                       return null;
                     },
@@ -145,7 +146,7 @@ class _BarangPageState extends State<BarangPage> {
                     },
                   ),
                   const SizedBox(height: 16),
-                  
+
                   //dropdown untuk memilih jenis barang dan automatis mengisi harga satuan
                   DropdownButtonFormField<String>(
                     value: selectedJenisBarang,
@@ -230,8 +231,7 @@ class _BarangPageState extends State<BarangPage> {
 
                       const SizedBox(width: 16),
 
-                      //field harga satuan sudah terisi 
-
+                      //field harga satuan sudah terisi
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -288,7 +288,7 @@ class _BarangPageState extends State<BarangPage> {
                             'JenisBrg': selectedJenisBarang?.trim() ?? '',
                             'jumlahbrg': jumlahBrgController.text,
                             'satuan': hargaSatuanController.text,
-                            'totalHarga': totalHarga.toString()
+                            'totalHarga': totalHarga.toString(),
                           });
                         });
                         Navigator.push(
@@ -297,15 +297,17 @@ class _BarangPageState extends State<BarangPage> {
                             builder:
                                 (context) => DetailBarang(
                                   nmAkun: widget.nmAkun,
-                                emailAkun: widget.emailAkun,
-                                pwAkun: widget.pwAkun,
+                                  emailAkun: widget.emailAkun,
+                                  pwAkun: widget.pwAkun,
 
-                                tglTransaksi: dataBarang.last['tglTransaksi'] ?? '',
-                                jenisBrg:  dataBarang.last['JenisBrg'] ?? '',
-                                jenisTransaksi: dataBarang.last['JenisTrans'] ?? '',
-                                jumlahBrg: dataBarang.last['jumlahbrg'] ?? '',
-                                hgSatuan: dataBarang.last['satuan'] ?? '',
-                                 totalHarga: totalHarga,
+                                  tglTransaksi:
+                                      dataBarang.last['tglTransaksi'] ?? '',
+                                  jenisBrg: dataBarang.last['JenisBrg'] ?? '',
+                                  jenisTransaksi:
+                                      dataBarang.last['JenisTrans'] ?? '',
+                                  jumlahBrg: dataBarang.last['jumlahbrg'] ?? '',
+                                  hgSatuan: dataBarang.last['satuan'] ?? '',
+                                  totalHarga: totalHarga,
                                 ),
                           ),
                         );
