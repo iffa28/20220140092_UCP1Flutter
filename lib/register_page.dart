@@ -308,6 +308,41 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                       ],
                     ),
+
+                    const SizedBox(height: 50),
+                    ElevatedButton(
+                      onPressed: () {
+                        if (formKey.currentState!.validate()) {
+                          setState(() {
+                            dataUser.add({
+                              'nama': namaController.text,
+                              'email': regEmailController.text,
+                              'password': regPasswordController.text,
+                              'hp': phoneController.text,
+                            });
+                          });
+                          
+                        }
+                      },
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15.0),
+                        ),
+                        backgroundColor: Color(0XFF2D336B),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 167,
+                          vertical: 18,
+                        ),
+                      ),
+                      child: Text(
+                        'Daftar',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ],
