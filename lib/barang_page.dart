@@ -1,7 +1,6 @@
 
 import 'package:flutter/material.dart';
 
-
 class BarangPage extends StatefulWidget {
   final String nmAkun;
   final String emailAkun;
@@ -21,7 +20,7 @@ class _BarangPageState extends State<BarangPage> {
   final TextEditingController hargaSatuanController = TextEditingController();
   final TextEditingController jumlahBrgController = TextEditingController();
 
- 
+  List<Map<String, String>> dataBarang = [];
 
   @override
   Widget build(BuildContext context) {
