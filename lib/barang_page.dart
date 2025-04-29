@@ -33,6 +33,17 @@ class _BarangPageState extends State<BarangPage> {
 
   int totalHarga = 0;
 
+  void hitungTotalHarga() {
+    int hargaSatuan = int.tryParse(hargaSatuanController.text) ?? 0;
+    int jumlahBrg = int.tryParse(jumlahBrgController.text) ?? 0;
+
+    setState(() {
+      totalHarga = (jumlahBrg * hargaSatuan);
+    });
+  }
+
+  final formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     
