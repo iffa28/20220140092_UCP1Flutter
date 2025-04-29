@@ -1,5 +1,7 @@
-
+import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:ucp1/detail_barang.dart';
 
 class BarangPage extends StatefulWidget {
   final String nmAkun;
@@ -21,6 +23,15 @@ class _BarangPageState extends State<BarangPage> {
   final TextEditingController jumlahBrgController = TextEditingController();
 
   List<Map<String, String>> dataBarang = [];
+
+  final Map<String, int> hargaBarangMap = {
+    'Carrier': 700000,
+    'Sleeping Bag': 100000,
+    'Tenda': 200000,
+    'Sepatu': 400000,
+  };
+
+  int totalHarga = 0;
 
   @override
   Widget build(BuildContext context) {
