@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ucp1/home_page.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -321,7 +322,17 @@ class _RegisterPageState extends State<RegisterPage> {
                               'hp': phoneController.text,
                             });
                           });
-                          
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder:
+                                  (context) => HomePage(
+                                    nama: dataUser.last['nama'] ?? '',
+                                    email: dataUser.last['email'] ?? '',
+                                    pw: dataUser.last['password'] ?? '',
+                                  ),
+                            ),
+                          );
                         }
                       },
                       style: ElevatedButton.styleFrom(
