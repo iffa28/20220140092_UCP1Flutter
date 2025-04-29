@@ -3,7 +3,15 @@ import 'package:ucp1/home_page.dart';
 import 'package:ucp1/register_page.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key,});
+  final String namaUser;
+  final String email;
+  final String password;
+  const LoginPage({
+    super.key,
+    required this.email,
+    required this.namaUser,
+    required this.password,
+  });
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -138,7 +146,6 @@ class _LoginPageState extends State<LoginPage> {
                             MaterialPageRoute(
                               builder:
                                   (context) => HomePage(
-
                                   ),
                             ),
                           );
