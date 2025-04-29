@@ -286,6 +286,7 @@ class _CustomerPageState extends State<CustomerPage> {
                             'provinsi': provinsiCustController.text,
                             'kodePos': kodePosCustController.text,
                           });
+
                           Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -321,7 +322,35 @@ class _CustomerPageState extends State<CustomerPage> {
                       ),
                     ),
                   ),
-                  
+                  const SizedBox(height: 16),
+                  ElevatedButton(
+                    onPressed: () {
+                      if (formKey.currentState != null) {
+                        setState(() {
+                          namaCustController.clear();
+                          emailCustController.clear();
+                          phoneCustController.clear();
+                          alamatCustController.clear();
+                          provinsiCustController.clear();
+                          kodePosCustController.clear();
+                        });
+                      }
+                    },
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+                      minimumSize: const Size(500, 70),
+                    ),
+                    child: Text(
+                      'Reset',
+                      style: TextStyle(
+                        color: Colors.blueAccent,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
