@@ -17,7 +17,8 @@ class BarangPage extends StatefulWidget {
 }
 
 class _BarangPageState extends State<BarangPage> {
-
+  String? selectedJenisTransaksi;
+  String? selectedJenisBarang;
   final TextEditingController tglTransaksiController = TextEditingController();
   final TextEditingController hargaSatuanController = TextEditingController();
   final TextEditingController jumlahBrgController = TextEditingController();
