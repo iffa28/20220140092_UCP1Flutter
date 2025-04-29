@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
 
@@ -14,6 +13,8 @@ class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController regEmailController = TextEditingController();
   final TextEditingController regPasswordController = TextEditingController();
   final TextEditingController ConfPasswordController = TextEditingController();
+  bool _obscurePassword = true;
+  bool _obscureConfPassword = true;
 
   @override
   Widget build(BuildContext context) {
@@ -196,6 +197,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               const SizedBox(height: 8),
                               TextFormField(
                                 controller: regPasswordController,
+                                obscureText: _obscurePassword,
                                 keyboardType: TextInputType.visiblePassword,
                                 decoration: InputDecoration(
                                   //membuat icon di start text field
@@ -204,7 +206,18 @@ class _RegisterPageState extends State<RegisterPage> {
                                     heightFactor: 1.0,
                                     child: Icon(Icons.lock),
                                   ),
-                                  
+                                  suffixIcon: IconButton(
+                        icon: Icon(
+                          _obscurePassword
+                              ? Icons.visibility_off
+                              : Icons.visibility,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _obscurePassword = !_obscurePassword;
+                          });
+                        },
+                      ),
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(15.0),
                                   ),
@@ -244,6 +257,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               const SizedBox(height: 8),
                               TextFormField(
                                 controller: ConfPasswordController,
+                                obscureText: _obscureConfPassword,
                                 keyboardType: TextInputType.visiblePassword,
                                 decoration: InputDecoration(
                                   //membuat icon di start text field
@@ -252,7 +266,18 @@ class _RegisterPageState extends State<RegisterPage> {
                                     heightFactor: 1.0,
                                     child: Icon(Icons.lock),
                                   ),
-                                  
+                                  suffixIcon: IconButton(
+                        icon: Icon(
+                          _obscureConfPassword
+                              ? Icons.visibility_off
+                              : Icons.visibility,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _obscureConfPassword = !_obscureConfPassword;
+                          });
+                        },
+                      ),
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(15.0),
                                   ),
