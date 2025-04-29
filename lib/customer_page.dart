@@ -15,6 +15,7 @@ class CustomerPage extends StatefulWidget {
 }
 
 class _CustomerPageState extends State<CustomerPage> {
+  List<Map<String, String>> dataPelanggan = [];
 
   @override
   Widget build(BuildContext context) {
